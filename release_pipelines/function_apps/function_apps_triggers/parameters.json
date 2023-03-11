@@ -3,19 +3,19 @@
     "contentVersion": "1.0.0.0",
     "parameters": {
         "subscriptionId": {
-            "value": "db204541-b5e6-4c49-ac3c-9807eaaf14ec"
+            "value": ""
         },
         "name": {
-            "value": "sign-trigger1"
+            "value": ""
         },
         "location": {
-            "value": "West Europe"
+            "value": ""
         },
         "hostingPlanName": {
-            "value": "ASP-rgapps1-85de"
+            "value": ""
         },
         "serverFarmResourceGroup": {
-            "value": "rg-data"
+            "value": ""
         },
         "alwaysOn": {
             "value": true
@@ -24,7 +24,7 @@
             "value": "FtpsOnly"
         },
         "storageAccountName": {
-            "value": "rgapps1a252"
+            "value": ""
         },
         "sku": {
             "value": "Basic"
