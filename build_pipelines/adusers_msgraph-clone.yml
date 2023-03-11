@@ -70,8 +70,7 @@ jobs:
     inputs:
       targetType: inline
       script: >
-        Connect-MgGraph -ClientID 6e0b8a78-d504-4805-8ec2-078ba0d2d47c -TenantId 2db8e41f-6aa4-4710-96db-207b474096f4 -CertificateThumbprint 0771678935C9E11E73535777395B0D91FFC9150A
-
+        Connect-MgGraph -ClientID xxxxxxxx -TenantId xxxxxxxxxxxxxxxx -CertificateThumbprint xxxxxxxxxxxxxxxxxxxxxxxx
         ##Retrieve the Licensing Group
 
         $LicenseGroup = Get-MgGroup -Filter "Displayname eq 'Licenses365'"
