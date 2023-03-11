@@ -23,7 +23,7 @@ module.exports = async function (context, myBlob) {
         url: 'https://dev.azure.com/passadis/demo-azureheads/_apis/build/builds?api-version=7.1-preview.7',
         headers: { 
           'Content-Type': 'application/json', 
-          'Authorization': 'Basic OnVmNTR5eXFraXhoZHJqZjQ1dGNvbmlnMnN5YmM2ZXVvM290YmZxbnBiZjNhMnUyNmt5NmE=', 
+          'Authorization': 'Basic process.env.PAT', 
         },
         data : data
       };
