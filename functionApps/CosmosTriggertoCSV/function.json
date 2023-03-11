@@ -5,7 +5,7 @@
       "name": "documents",
       "direction": "in",
       "leaseCollectionName": "leases",
-      "connectionStringSetting": "signuseu2_DOCUMENTDB",
+      "connectionStringSetting": "xxxxxxXXXXX",
       "databaseName": "Input",
       "collectionName": "Signup",
       "createLeaseCollectionIfNotExists": true
@@ -21,11 +21,11 @@
   ],
   "disabled": false,
   "values": {
-    "AZURE_CLIENT_ID" : "169c8a96-0b68-42e3-a970-91948ced7fb9",
-     "AZURE_TENANT_ID" : "2db8e41f-6aa4-4710-96db-207b474096f4",
-      "AZURE_CLIENT_SECRET" : "9.K8Q~aZSN-3YHUue-OzKLzef~ekIsOqcDSSEao0",
+    "AZURE_CLIENT_ID" : "XXXXXX",
+     "AZURE_TENANT_ID" : "XXXXXXXXXXXXXXX",
+      "AZURE_CLIENT_SECRET" : "XXXXXXXXXXXXXXXXXxxx",
     "BlobContainerName": "data",
-    "BlobAccountName": "strkp09",
-    "BlobStorageConnectionString" : "DefaultEndpointsProtocol=https;AccountName=strkp09;AccountKey=wKhinX/hr/sJC2T/fue6ycBnAmxRb6W33YWt/9h0YVpCB8h4U3S+nxthyyoqkQadxXijwYYTyx7B+ASt2/ez2g==;EndpointSuffix=core.windows.net"
+    "BlobAccountName": "xxx",
+    "BlobStorageConnectionString" : "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
   }
 }
