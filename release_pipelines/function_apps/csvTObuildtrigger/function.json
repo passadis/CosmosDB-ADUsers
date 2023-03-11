@@ -5,21 +5,14 @@
       "type": "blobTrigger",
       "direction": "in",
       "path": "csv/data/users.csv",
-      "connection": "strkp09_STORAGE"
+      "connection": "xxxx_XXXX"
     }
   ],
   "values": {
-    "organization":"passadis",
-    "AccountName" : "passadis",
+   "AccountName" : "passadis",
     "ProjectName": "demo-azureheads",
-    "sourceBranch" : "main",
-    "PipelineId": "adusers_msgraph-sdk",
      "definitionId": "10",
-     "AzureDevOpsCollectionURL": "https://dev.azure.com/passadis",
-    "clientId": "169c8a96-0b68-42e3-a970-91948ced7fb9",
-    "tenantId": "2db8e41f-6aa4-4710-96db-207b474096f4", 
-    "clientSecret": "zdg8Q~jAKjsk4g1vzNxb~EctjJGm25O35B3rucz8",
-      "PersonalAccessToken": "uf54yyqkixhdrjf45tconig2sybc6euo3otbfqnpbf3a2u26ky6a",
-    "AZURE_DEVOPS_ACCESS_TOKEN": "uf54yyqkixhdrjf45tconig2sybc6euo3otbfqnpbf3a2u26ky6a"
+     "AzureDevOpsCollectionURL": "https://dev.azure.com/xxxxxx",
+      "PersonalAccessToken": "xxxxxxxxxxxxxxxxxxxx"
   }
   }
