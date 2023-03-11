@@ -57,7 +57,7 @@
             "kind": "functionapp",
             "location": "[parameters('location')]",
             "tags": {
-                "hidden-link: /app-insights-resource-id": "/subscriptions/db204541-b5e6-4c49-ac3c-9807eaaf14ec/resourceGroups/rg-data/providers/Microsoft.Insights/components/sign-trigger1"
+                
             },
             "dependsOn": [
                 "microsoft.insights/components/sign-trigger1",
@@ -140,7 +140,7 @@
                 "Request_Source": "IbizaWebAppExtensionCreate",
                 "Flow_Type": "Redfield",
                 "Application_Type": "web",
-                "WorkspaceResourceId": "/subscriptions/db204541-b5e6-4c49-ac3c-9807eaaf14ec/resourceGroups/log-insights/providers/Microsoft.OperationalInsights/workspaces/Logging"
+                "WorkspaceResourceId": "/subscriptions/[parameters('subscriptionId')]/resourceGroups/[resourceGroup().name]/providers/Microsoft.OperationalInsights/workspaces/[parameters('omsworkspaceid')]"
             }
         },
         {
