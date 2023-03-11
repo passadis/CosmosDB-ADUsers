@@ -14,4 +14,5 @@ A really nice Solution which integrates Azure Services & DevOps while most of th
 - Patience!
 
 Here is a more detailed Diagram with the components we use. Remeber every Resource has Private Endpoint and we are using Service Principals for the Authentication and Authorization Tasks.
-![Solv5](https://user-images.githubusercontent.com/53148138/223170864-f4048445-bdff-4c1a-b683-88bdd37ae6f9.png)
+![image](https://user-images.githubusercontent.com/53148138/224480182-8fcc16ac-7b2a-496a-bbf4-e516c981f5bf.png)
+
