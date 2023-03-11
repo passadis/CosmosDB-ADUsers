@@ -1,0 +1,111 @@
+# Variable 'accountkey' was defined in the Variables tab
+# Variable 'accountname' was defined in the Variables tab
+# Variable 'containername' was defined in the Variables tab
+# Variable 'System.Down.Dir' was defined in the Variables tab
+jobs:
+- job: Job_2
+  displayName: Agentless job
+  pool: server
+  steps:
+  - task: ManualValidation@0
+    displayName: Manual Validation
+    timeoutInMinutes: 15
+    inputs:
+      notifyUsers: passadis@outlook.com
+      instructions: >-
+        Please approve to Upload New Users into Azure AD!
+
+        In case you do not reply the Task will halt!
+- job: Job_1
+  displayName: Agent job 1
+  dependsOn: Job_2
+  pool:
+    name: Wins
+  steps:
+  - checkout: self
+    fetchDepth: 1
+  - task: PowerShell@2
+    displayName: PowerShell Script
+    enabled: False
+    inputs:
+      targetType: inline
+      script: >
+        Install-Module -Name Microsoft.Graph  -Force
+      pwsh: true
+  - task: AzureCLI@2
+    displayName: 'Azure CLI '
+    inputs:
+      connectedServiceNameARM: e5f76e39-9e0e-4faf-a655-36a74f43c511
+      scriptType: batch
+      scriptLocation: inlineScript
+      inlineScript: >-
+        call az storage blob download --container-name $(containername) --file $(System.Down.Dir)\bulkusers.csv --name "users.csv" --account-key $(accountkey) --account-name $(accountname)
+
+        call az storage blob copy start-batch --destination-container csvfiles  --account-name $(accountname) --account-key $(accountkey) --source-account-name $(accountname)  --source-account-key $(accountkey) --source-container csv
+
+        call az storage blob delete -c  $(containername) -n "users.csv" --account-key $(accountkey) --account-name $(accountname)
+  - task: CopyFiles@2
+    displayName: 'Copy Files to: $(Build.StagingDirectory)'
+    inputs:
+      SourceFolder: $(System.Down.Dir)
+      TargetFolder: $(Build.StagingDirectory)
+      OverWrite: true
+  - task: PublishPipelineArtifact@1
+    name: ''
+    displayName: Publish Pipeline Artifact
+    inputs:
+      path: $(Build.StagingDirectory)\bulkusers.csv
+      artifactName: csvfile
+  - task: PowerShell@2
+    displayName: PowerShell ScriptWrite
+    inputs:
+      targetType: inline
+      script: >
+        Write-Host "Build default working directory: $(Build.StagingDirectory)"
+
+        Write-Host "##vso[task.setvariable variable=csvpath;]$(Build.StagingDirectory)"
+      pwsh: true
+  - task: PowerShell@2
+    displayName: PowerShell Script
+    inputs:
+      targetType: inline
+      script: >
+        Connect-MgGraph -ClientID 6e0b8a78-d504-4805-8ec2-078ba0d2d47c -TenantId 2db8e41f-6aa4-4710-96db-207b474096f4 -CertificateThumbprint 0771678935C9E11E73535777395B0D91FFC9150A
+
+        ##Retrieve the Licensing Group
+
+        $LicenseGroup = Get-MgGroup -Filter "Displayname eq 'Licenses365'"
+
+
+        ##Import the CSV
+
+        $csv = Import-Csv -Path "$env:csvpath\bulkusers.csv"
+
+
+        ##Set the Domain Suffix
+
+        $DomainSuffix = "securevoip.eu"
+
+
+        ##Loop through each user
+
+        foreach($user in $csv){
+
+        $PasswordProfile = @{
+
+        Password = $user.'Password'
+
+        }
+
+        ##Provision the user
+
+        $UserObject = New-MgUser -DisplayName "$($user.'firstname') $($user.lastname)" -PasswordProfile $PasswordProfile -AccountEnabled -MailNickname "$($user.'nickname')" -UserPrincipalName "$($user.'nickname')@$DomainSuffix"
+
+
+        ##Add the user to the license group
+
+        New-MgGroupMember -GroupId $LicenseGroup.id -DirectoryObjectId $UserObject.id
+
+        }
+      pwsh: true
+...
