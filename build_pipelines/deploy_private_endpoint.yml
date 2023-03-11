@@ -1,0 +1,46 @@
+# Variable 'System.Test.Directory' was defined in the Variables tab
+jobs:
+- job: Job_1
+  displayName: Agent job 1
+  pool:
+    name: Wins
+  steps:
+  - checkout: self
+    fetchDepth: 3
+  - task: CopyFiles@2
+    displayName: Copy Files
+    inputs:
+      SourceFolder: cosmos-sql/pshell
+      TargetFolder: $(Build.ArtifactsStagingDirectory)
+  - task: CopyFiles@2
+    displayName: 'Copy Files to: $(System.Test.Directory)'
+    inputs:
+      SourceFolder: cosmos-sql/pshell
+      TargetFolder: $(System.Test.Directory)
+      OverWrite: true
+  - task: PublishPipelineArtifact@1
+    displayName: Publish Pipeline Artifact
+    inputs:
+      path: $(System.Test.Directory)
+      artifactName: filespath
+  - task: PowerShell@2
+    displayName: PowerShell Script
+    inputs:
+      targetType: inline
+      script: >
+        Write-Host "Build default working directory: $(System.Test.Directory)"
+
+        Write-Host "##vso[task.setvariable variable=filespath;]$(System.Test.Directory)"
+
+        # !! SEE WARNING ABOVE.
+
+        $PSDefaultParameterValues = @{ '*:Force' = $true; '*:Confirm' = $false }
+
+        # ... Commands that normally prompt for confirmation.
+      pwsh: true
+  - task: PowerShell@2
+    displayName: PowerShell Script
+    inputs:
+      filePath: $(System.Test.Directory)\privateendpoint.ps1
+      pwsh: true
+...
