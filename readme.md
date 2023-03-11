@@ -16,4 +16,17 @@ A really nice Solution which integrates Azure Services & DevOps while most of th
 Here is a more detailed Diagram with the components we use. Remeber every Resource has Private Endpoint and we are using Service Principals for the Authentication and Authorization Tasks.
 ![image](https://user-images.githubusercontent.com/53148138/224480182-8fcc16ac-7b2a-496a-bbf4-e516c981f5bf.png)
 
-The Folders contain the Release and Build Pipelines needed to deploy the basis of the Solution. Once we run the release Pipeline 
+What we are doing here is:  
+- Deploy the Log Analytics Workspace
+- Deploy the Cosmos DB and the VNET
+- Deploy a Cosmos DB Container with Unique Key
+- Deploy the Function App with an Application Basic Plan (B1)
+- Configure CORS
+- Integrate the Function APP with the VNET
+Then Stage 2 is triggering a Build which Copies and runs a Powershell Script on the Self Hosted Agent that creates and configures the Private DNS Zone for Cosmos.
+Once the Resources are up and running use the 
+
+
+The Folders contain the Release and Build Pipelines needed to deploy the basis of the Solution. Once we run the release Pipeline Stage 2 triggers the Build Pipeline which deploys the Private DNS Zone and adds the Cosmos DB Configuration of the Private Endpoint
+
+Stay tuned for the YAML Files so you can import and deploy with ease !
