@@ -1,0 +1,140 @@
+{
+    "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "name": {
+            "type": "string"
+        },
+        "location": {
+            "type": "string"
+        },
+        "locationName": {
+            "type": "string"
+        },
+        "defaultExperience": {
+            "type": "string"
+        },
+        "isZoneRedundant": {
+            "type": "string"
+        },
+      "publicNetworkAccess": {
+      "type": "string",
+      "defaultValue": "Enabled",
+      "allowedValues": [
+        "Enabled",
+        "Disabled"
+      ]
+      }
+    },
+    "variables": {},
+    "resources": [
+        {
+            "apiVersion": "2019-04-01",
+            "name": "vnet-functions",
+            "type": "Microsoft.Network/virtualNetworks",
+            "location": "westeurope",
+            "properties": {
+                "addressSpace": {
+                    "addressPrefixes": [
+                        "10.11.0.0/16"
+                    ]
+                },
+                "dhcpOptions": {
+                    "dnsServers": []
+                },
+                "subnets": [
+                    {
+                        "name": "default",
+                        "properties": {
+                            "addressPrefix": "10.11.10.0/24",
+                            "addressPrefixes": [
+                                "10.11.10.0/24"
+                            ],
+                            "networkSecurityGroup": null,
+                            "routeTable": null,
+                            "ipConfigurations": [],
+                            "applicationGatewayIPConfigurations": [],
+                            "serviceEndpoints": [
+                                {
+                                    "service": "Microsoft.AzureCosmosDB",
+                                    "locations": []
+                                }
+                            ],
+                            "resourceNavigationLinks": []
+                        }
+                    }
+                ],
+                "virtualNetworkPeerings": []
+            },
+            "tags": {}
+        },
+        {
+            "apiVersion": "2022-11-15-preview",
+            "kind": "GlobalDocumentDB",
+            "type": "Microsoft.DocumentDb/databaseAccounts",
+            "name": "[parameters('name')]",
+            "location": "[parameters('location')]",
+            "properties": {
+                "databaseAccountOfferType": "Standard",
+                "locations": [
+                    {
+                        "id": "[concat(parameters('name'), '-', parameters('location'))]",
+                        "failoverPriority": 0,
+                        "locationName": "[parameters('locationName')]"
+                    }
+                ],
+                "backupPolicy": {
+                    "type": "Periodic",
+                    "periodicModeProperties": {
+                        "backupIntervalInMinutes": 1440,
+                        "backupRetentionIntervalInHours": 48,
+                        "backupStorageRedundancy": "Local"
+                    }
+                },
+                "isVirtualNetworkFilterEnabled": true,
+                "virtualNetworkRules": [
+                    {
+                        "id": "/subscriptions/db204541-b5e6-4c49-ac3c-9807eaaf14ec/resourceGroups/rg-data/providers/Microsoft.Network/virtualNetworks/vnet-functions/subnets/default"
+                    }
+                ],
+                "ipRules": [
+                    {
+                        "ipAddressOrRange": "104.42.195.92"
+                    },
+                    {
+                        "ipAddressOrRange": "40.76.54.131"
+                    },
+                    {
+                        "ipAddressOrRange": "52.176.6.30"
+                    },
+                    {
+                        "ipAddressOrRange": "52.169.50.45"
+                    },
+                    {
+                        "ipAddressOrRange": "52.187.184.26"
+                    },
+                    {
+                        "ipAddressOrRange": "109.242.184.249"
+                    },
+                    {
+                        "ipAddressOrRange": "20.238.86.83"
+                    }
+                ],
+                "dependsOn": [
+                    "Microsoft.Network/virtualNetworks/vnet-functions"
+                ],
+                "enableMultipleWriteLocations": false,
+                "capabilities": [],
+                "enableFreeTier": true,
+                "capacity": {
+                    "totalThroughputLimit": 1000
+                }
+            },
+            "tags": {
+                "defaultExperience": "[parameters('defaultExperience')]",
+                "hidden-cosmos-mmspecial": ""
+            }
+        }
+    ],
+    "outputs": {}
+}
