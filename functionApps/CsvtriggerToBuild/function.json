@@ -5,7 +5,7 @@
       "type": "blobTrigger",
       "direction": "in",
       "path": "csv/data/users.csv",
-      "connection": "strkp09_STORAGE"
+      "connection": "xxxxXXXXXX"
     }
   ],
   "values": {
@@ -15,7 +15,6 @@
     "sourceBranch" : "main",
      "definitionId": "10",
      "AzureDevOpsCollectionURL": "xxxxxxxxx",
-     "PersonalAccessToken": "uf54yyqkixhdrjf45tconig2sybc6euo3otbfqnpbf3a2u26ky6a",
-    "AZURE_DEVOPS_ACCESS_TOKEN": "uf54yyqkixhdrjf45tconig2sybc6euo3otbfqnpbf3a2u26ky6a"
+     "PAT": "xxxxxxxxxxxxxxx"
   }
   }
