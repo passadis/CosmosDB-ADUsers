@@ -1,0 +1,31 @@
+{
+  "bindings": [
+    {
+      "type": "cosmosDBTrigger",
+      "name": "documents",
+      "direction": "in",
+      "leaseCollectionName": "leases",
+      "connectionStringSetting": "signuseu2_DOCUMENTDB",
+      "databaseName": "Input",
+      "collectionName": "Signup",
+      "createLeaseCollectionIfNotExists": true
+    },
+    {
+      "type": "blob",
+      "name": "outputBlob",
+      "connection": "AzureWebJobsStorage_accountname",
+      "path": "users.csv",
+      "direction": "out"
+
+    }
+  ],
+  "disabled": false,
+  "values": {
+    "AZURE_CLIENT_ID" : "169c8a96-0b68-42e3-a970-91948ced7fb9",
+     "AZURE_TENANT_ID" : "2db8e41f-6aa4-4710-96db-207b474096f4",
+      "AZURE_CLIENT_SECRET" : "9.K8Q~aZSN-3YHUue-OzKLzef~ekIsOqcDSSEao0",
+    "BlobContainerName": "data",
+    "BlobAccountName": "strkp09",
+    "BlobStorageConnectionString" : "DefaultEndpointsProtocol=https;AccountName=strkp09;AccountKey=wKhinX/hr/sJC2T/fue6ycBnAmxRb6W33YWt/9h0YVpCB8h4U3S+nxthyyoqkQadxXijwYYTyx7B+ASt2/ez2g==;EndpointSuffix=core.windows.net"
+  }
+}
