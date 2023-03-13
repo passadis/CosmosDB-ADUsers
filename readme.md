@@ -9,7 +9,7 @@ A really nice Solution which integrates Azure Services & DevOps while most of th
 
 - An Azure Subscription
 - VS Code
-- A DevOps Organization
+- A DevOps Organization and a Self Hosted Agent with Standard Public IP
 - A Microsoft 365 Tenant with some trial licenses ( This is optional as the MS Graph also assigns the users into a Group with Licenses)
 - Patience!
 
