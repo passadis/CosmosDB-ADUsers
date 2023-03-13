@@ -14,7 +14,8 @@ A really nice Solution which integrates Azure Services & DevOps while most of th
 - Patience!
 
 Here is a more detailed Diagram with the components we use. Remeber every Resource has Private Endpoint and we are using Service Principals for the Authentication and Authorization Tasks.
-![image](https://user-images.githubusercontent.com/53148138/224480182-8fcc16ac-7b2a-496a-bbf4-e516c981f5bf.png)
+![image](https://user-images.githubusercontent.com/53148138/224698198-ce966da8-1d5c-43b2-8e06-25744e26c265.png)
+
 
 What we are doing here is:  
 - Deploy the Log Analytics Workspace
