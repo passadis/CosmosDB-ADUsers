@@ -25,7 +25,7 @@ What we are doing here is:
 - Configure CORS
 - Integrate the Function APP with the VNET
 Then Stage 2 is triggering a Build which Copies and runs a Powershell Script on the Self Hosted Agent that creates and configures the Private DNS Zone for Cosmos.
-Once the Resources are up and running use the 
+Once the Resources are up and running use the files on the repo folders
 
 
 The Folders contain the Release and Build Pipelines needed to deploy the basis of the Solution. Once we run the release Pipeline Stage 2 triggers the Build Pipeline which deploys the Private DNS Zone and adds the Cosmos DB Configuration of the Private Endpoint
