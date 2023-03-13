@@ -29,4 +29,4 @@ Once the Resources are up and running use the
 
 The Folders contain the Release and Build Pipelines needed to deploy the basis of the Solution. Once we run the release Pipeline Stage 2 triggers the Build Pipeline which deploys the Private DNS Zone and adds the Cosmos DB Configuration of the Private Endpoint
 
-Stay tuned for the YAML Files so you can import and deploy with ease !
+Contact me if you have an idea to make this better!
