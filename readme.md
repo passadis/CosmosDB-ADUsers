@@ -13,7 +13,7 @@ A really nice Solution which integrates Azure Services & DevOps while most of th
 - A Microsoft 365 Tenant with some trial licenses ( This is optional as the MS Graph also assigns the users into a Group with Licenses)
 - Patience!
 
-Here is a more detailed Diagram with the components we use. Remeber every Resource has Private Endpoint and we are using Service Principals for the Authentication and Authorization Tasks.
+Here is a more detailed Diagram with the components we use. Remember every Resource has Private Endpoint and we are using Service Principals for the Authentication and Authorization Tasks.
 ![image](https://user-images.githubusercontent.com/53148138/224698198-ce966da8-1d5c-43b2-8e06-25744e26c265.png)
 
 
