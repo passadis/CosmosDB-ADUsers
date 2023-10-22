@@ -1,1 +1,1 @@
-Use these files o deploy the Functions from Local deployement
+Use these files to deploy the Functions from Local deployement
