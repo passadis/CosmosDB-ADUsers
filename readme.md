@@ -4,8 +4,8 @@
   </a>
 </p>
 
-
-# Register and Import AD Users from Cosmos DB and Azure Functions with HTML and Static Apps 
+<h1 align="center">Register and Import Entra ID Users from Cosmos DB and Azure Functions with DevOps</h1>
+ 
 
 This Repo contains all the Pipelines needed to deploy a Solution that imports AD Users from an HTML Registration form. The form is hosted on Azure Static Apps, for later updates and enhancements.The procedure inserts the fields into Comsos DB via Azure Functions HTTP Trigger, checks for Unique ID on the nickname value, and if it is OK the data is stored. Another Function is triggered and the User details are transfromed to CSV and Stored in a Storage Blob. From there we can have an hourly or a Scheduled Trigger to start a Build Pipeline which copies the CSV into a Self Hosted DevOps Agent and uses MS Graph SDK (Powershell) to import the users to AzureAD. I have added a third Function that triggers the build Pipeline once the CSV is created ! So it is a fully automated procedure! 
 
