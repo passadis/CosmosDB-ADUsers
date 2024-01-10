@@ -1,6 +1,6 @@
 <p align="center">
   <a href="https://skillicons.dev">
-    <img src="https://skillicons.dev/icons?i=azure,powershell,html,css,vscode" />
+    <img src="https://skillicons.dev/icons?i=azure,powershell,html,css,dotnet,vscode" />
   </a>
 </p>
 
