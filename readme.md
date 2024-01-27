@@ -57,6 +57,9 @@ The Folders contain the Release and Build Pipelines needed to deploy the basis o
 
 Contact me if you have an idea to make this better!
 
+## Instructions
+**Follow the Blog for Detailed Instructions**: For step-by-step guidance, visit [Import AD Users from HTML Form using CosmosDB and Azure Functions](https://www.cloudblogger.eu/2023/03/06/import-ad-users-from-html-form-using-cosmosdb-and-azure-functions/).
+
 ## Architecture
 
 ![image](https://user-images.githubusercontent.com/53148138/223159115-e4dda8f8-930e-4d7c-b6d0-8d4cb60006d9.png)
